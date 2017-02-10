@@ -21,7 +21,7 @@ public class LerPlanilha {
 	public LerPlanilha(String path){
 		sql = new Sql();
 		try{
-			subArea = new SubArea();
+			
 			
 			FileInputStream fp = new FileInputStream(new File(path));
 			XSSFWorkbook wb = new XSSFWorkbook(fp);
@@ -31,6 +31,7 @@ public class LerPlanilha {
 			while(rowIterator.hasNext()){
 				Row row = rowIterator.next();
 				Iterator<Cell> cellIterator = row.cellIterator();
+				subArea = new SubArea();
 				
 				while(cellIterator.hasNext()){
 					Cell cell = cellIterator.next();
@@ -42,22 +43,30 @@ public class LerPlanilha {
 							subArea.setArea(cell.getStringCellValue());
 							break;
 						case 2:
-							subArea.setSsp(cell.getStringCellValue());
+							subArea.setSubArea(cell.getStringCellValue());
 							break;
 						case 3:
-							subArea.setCelular_ssp(cell.getStringCellValue());
+							subArea.setSsp(cell.getStringCellValue());
 							break;
 						case 4:
+							subArea.setCelular_ssp(cell.getStringCellValue());
+							break;
+						case 5:
 							subArea.setStatus(cell.getStringCellValue());
 							break;
+						default:
+							break;
 						}
-					listaSubArea.add(subArea);
+					
 				}
-				sql.insert(listaSubArea);
+				
+				listaSubArea.add(subArea);
+				
 			}
+			sql.insert(listaSubArea);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		System.out.println("=-=-=-=-=-=-=-=-=-="+listaSubArea.size()+"-=-=-="+listaSubArea.get(3));
+		System.out.println("=-=-=-=-=-=-=-=-=-="+listaSubArea.size()+"-=-=-="+listaSubArea.get(3).getArea());
 	}
 }

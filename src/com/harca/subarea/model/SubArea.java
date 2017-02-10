@@ -1,12 +1,18 @@
 package com.harca.subarea.model;
 
 public class SubArea {
-	private String empresa,area,ssp,celular_ssp,status;
+	private String empresa,area,subarea,ssp,celular_ssp,status;
 
 	public String getEmpresa() {
 		return empresa;
 	}
 
+	public String getSubArea(){
+		return subarea;
+	}
+	public void setSubArea(String sub){
+		this.subarea = sub;
+	}
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
 	}

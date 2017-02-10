@@ -26,8 +26,8 @@ public class Sql {
 			
 			try {
 				stmt = c.createStatement();
-				stmt.executeUpdate("INSERT INTO SUBAREA(EMPRESA,AREA,SSP,CELULAR_SSP,STATUS) VALUES"
-						+ "("+subArea.getEmpresa()+","+subArea.getArea()+","+subArea.getSsp()+","+subArea.getCelular_ssp()+","+subArea.getStatus()+")");
+				stmt.executeUpdate("INSERT INTO SUBAREA(EMPRESA,AREA,SUBAREA,SSP,CELULAR_SSP,STATUS) VALUES"
+						+ "('"+subArea.getEmpresa()+"','"+subArea.getArea()+"','"+subArea.getSubArea()+"','"+subArea.getSsp()+"','"+subArea.getCelular_ssp()+"','"+subArea.getStatus()+"')");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
